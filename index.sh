@@ -2,19 +2,30 @@
 #vtuber whole live recorder
 
 if [[ ! -n "$1" ]]; then
-  echo "usage: $0 [name] [format] [interval]"
+  echo "usage: $0 [name] [format] [loop|once] [interval] [savefolder]"
   exit 1
 fi
+if [ ! -d "./savevideo/$1" ]; then
+  mkdir ./savevideo/$1
+fi
 
-$youtube=grep "youtube.com" "$1".txt
-$bil=grep "bilibili.com" "$1".txt|egrep -o "[0-9]{2,}+"
-$twitch=grep "twitch.com" "$1".txt
-$twitcast=grep "twitcast" "$1".txt|grep -v https://twitcasting.tv/|cut -com 24-
-$openrec=grep "openrec" "$1".txt
+FORMAT="${2:-best}"
+INTERVAL="${4:-100}"
+
+$YOUTUBE=grep "youtube.com" "$1".txt
+$BIL=grep "bilibili.com" "$1".txt|egrep -o "[0-9]{2,}+"
+$TWITCH=grep "twitch.com" "$1".txt
+$TWITCAST=grep "twitcast" "$1".txt|grep -v https://twitcasting.tv/|cut -c 24-
+$OPENREC=grep "openrec" "$1".txt|grep -v https://www.openrec.tv/user/|cut -c 29-
 
 #youtube
-streamlink $1 
-#
+./record_youtube.sh $YOUTUBE $FORMAT $3 $INTERVAL $SAVEFOLDER &
+#bil    
+./record_bil.sh $BIL $FORMAT $3 $INTERVAL $SAVEFOLDER&
+#twitch [loop|once] [interval] [savefolder]
+./record_twitch.sh $TWITCH $FORAMT $3 $INTERVAL $SAVEFOLDER&
+#TWITCAST
+
 #wait退出5-9轮询
 #或者同时检测
 
@@ -23,4 +34,6 @@ echo "https://twitcasting.tv/merrysan_cas_?"|grep "twitcast" |cut -c 24-
 
 
 
-
+./record_youtube.sh https://www.youtube.com/channel/UCHog7L3CzsDg2GH9aza1bPg/live best loop 150 /home/centos/Recorder/savevideo/test/
+./record_bil.sh 14917277 150 /home/centos/Recorder/savevideo/test/
+./record_twitch.sh https://www.twitch.tv/yulihong22  best loop 150 /home/centos/Recorder/savevideo/test/
