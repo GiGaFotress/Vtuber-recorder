@@ -2,7 +2,7 @@
 # TwitCasting Live Stream Recorder
 
 if [[ ! -n "$1" ]]; then
-  echo "usage: $0 twitcasting_id [loop|once] [interval]"
+  echo "usage: $0 twitcasting_id [loop|once] [interval] [savefolder]"
   exit 1
 fi
 
@@ -26,7 +26,7 @@ while true; do
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
   done
-
+  cd $4  
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="twitcast_${1}_$(date +"%Y%m%d_%H%M%S").ts"
   echo "$LOG_PREFIX Start recording, stream saved to \"$FNAME\"."
@@ -37,7 +37,8 @@ while true; do
   #ffmpeg -i "$M3U8_URL" -codec copy -f mpegts "$FNAME" > "$FNAME.log" 2>&1 &
 
   # Start recording
-  ./livedl -tcas -tcas-retry = on "$1" > "$FNAME.livedl.log" 2>&1
+
+/home/centos/Recorder/livedl -tcas -tcas-retry=on "$1" > "$FNAME.livedl.log" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
