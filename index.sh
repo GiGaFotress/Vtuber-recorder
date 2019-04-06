@@ -24,23 +24,21 @@ if [ ! -d "$SAVEFOLDER" ]; then
   mkdir $SAVEFOLDER
 fi
 
-
-
 #youtube
-[[ -n "$YOUTUBE" ]] && ./record_youtube.sh $YOUTUBE $FORMAT $3 $INTERVAL $SAVEFOLDER &
+[[ -n "$YOUTUBE" ]] && ./record_youtube.sh $YOUTUBE $FORMAT $3 $INTERVAL $SAVEFOLDER $1 &
 
 #bil    
-[[ -n "$BIL" ]] && ./record_bil.sh $BIL $FORMAT $3 $INTERVAL $SAVEFOLDER&
+[[ -n "$BIL" ]] && ./record_bil.sh $BIL $FORMAT $3 $INTERVAL $SAVEFOLDER $1 &
 
 #twitch twitch_id [format] [loop|once] [interval] [savefolder]
-[[ -n "$TWITCH" ]] && ./record_twitch.sh $TWITCH $FORMAT $3 $INTERVAL $SAVEFOLDER&
+[[ -n "$TWITCH" ]] && ./record_twitch.sh $TWITCH $FORMAT $3 $INTERVAL $SAVEFOLDER $1 &
 
 #TWITCAST
 
 if [ ! -d "$SAVEFOLDER/livedl" ]; then
   cp ./livedl $SAVEFOLDER
 fi
-[[ -n "$TWITCAST" ]] && ./record_twitcast.sh $TWITCAST  $3 $INTERVAL $SAVEFOLDER&
+[[ -n "$TWITCAST" ]] && ./record_twitcast.sh $TWITCAST  $3 $INTERVAL $SAVEFOLDER $1 &
 #OPENREC
 #./record_openrec.sh $OPENRCE $FORAMT $3 $INTERVAL $SAVEFOLDER&
 wait
