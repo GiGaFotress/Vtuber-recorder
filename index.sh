@@ -2,7 +2,7 @@
 #vtuber whole live recorder
 
 if [[ ! -n "$1" ]]; then
-  echo "usage: $0 [name] [format] [loop|once] [interval] [savefolder]"
+  echo "usage: $0 [name] [format] [loop|once] [interval] "
   exit 1
 fi
 if [ ! -d "./savevideo/$1" ]; then
