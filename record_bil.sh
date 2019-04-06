@@ -28,7 +28,7 @@ while true; do
   echo "$LOG_PREFIX Use command \"tail -f $FNAME.log\" to track recording progress."
 
   # Start recording
-  biliroku -n $1 -o "$3$FNAME"  > "$3$FNAME.log" 2>&1
+  biliroku -n $1 -o "$5$FNAME"  > "$5$FNAME.log" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
