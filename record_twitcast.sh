@@ -1,7 +1,7 @@
 #!/bin/bash
 # TwitCasting Live Stream Recorder
 TWITCASTPID="$$"
-echo "$5:$TWITCASTPID" >> "./running.txt"
+echo "$5:TWITCAST  $TWITCASTPID" >> "./running.txt"
 cd $4
 INTERVAL="${3:-120}"
 if [[ ! -n "$1" ]]; then

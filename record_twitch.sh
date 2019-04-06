@@ -1,7 +1,7 @@
 #!/bin/bash
 # Twitch Live Stream Recorder
 TWITCHPID="$$"
-echo "$6:$TWITCHPID" >> "./running.txt"
+echo "$6:TWITCH  $TWITCHPID" >> "./running.txt"
 FORMAT="${2:-best}"
 INTERVAL="${4:-110}"
 if [[ ! -n "$1" ]]; then

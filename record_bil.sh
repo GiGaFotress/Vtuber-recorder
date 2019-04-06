@@ -2,7 +2,7 @@
 # Bil
 #$BIL $FORMAT $3 $INTERVAL $SAVEFOLDER&
 BILPID="$$"
-echo "$6:$BILPID" >> "./running.txt"
+echo "$6:BIL   $BILPID" >> "./running.txt"
 INTERVAL="${4:-130}"
 
 while true; do
