@@ -19,16 +19,16 @@ TWITCAST=$(grep "twitcast" "$1".txt|cut -c 24-)
 #OPENREC=$(grep "openrec" "$1".txt|grep -v https://www.openrec.tv/user/|cut -c 29-)
 
 #youtube
-./record_youtube.sh $YOUTUBE $FORMAT $3 $INTERVAL $SAVEFOLDER &
+[[ -n "$YOUTUBE" ]] && ./record_youtube.sh $YOUTUBE $FORMAT $3 $INTERVAL $SAVEFOLDER &
 
 #bil    
-./record_bil.sh $BIL $FORMAT $3 $INTERVAL $SAVEFOLDER&
+[[ -n "$BIL" ]] && ./record_bil.sh $BIL $FORMAT $3 $INTERVAL $SAVEFOLDER&
 
 #twitch twitch_id [format] [loop|once] [interval] [savefolder]
-./record_twitch.sh $TWITCH $FORMAT $3 $INTERVAL $SAVEFOLDER&
+[[ -n "$TWITCH" ]] && ./record_twitch.sh $TWITCH $FORMAT $3 $INTERVAL $SAVEFOLDER&
 
 #TWITCAST录制路径仍未解决
-./record_twitcast.sh $TWITCAST  $3 $INTERVAL $SAVEFOLDER&
+[[ -n "$TWITCAST" ]] && ./record_twitcast.sh $TWITCAST  $3 $INTERVAL $SAVEFOLDER&
 #OPENREC
 #./record_openrec.sh $OPENRCE $FORAMT $3 $INTERVAL $SAVEFOLDER&
 wait
