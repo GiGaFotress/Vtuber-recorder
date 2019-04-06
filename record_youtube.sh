@@ -1,5 +1,7 @@
 #!/bin/bash
 # YouTube Live Stream Recorder
+YOUTUBEPID="$$"
+echo "$6:$YOUTUBEPID" >> "./running.txt"
 
 if [[ ! -n "$1" ]]; then
   echo "usage: $0 live_url [format] [loop|once] [interval] [savefolder]"

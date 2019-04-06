@@ -29,7 +29,7 @@ while true; do
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
   done
-  cd $4  
+ 
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="twitcast_${1}_$(date +"%Y%m%d_%H%M%S").ts"
   echo "$LOG_PREFIX Start recording, stream saved to \"$FNAME\"."
