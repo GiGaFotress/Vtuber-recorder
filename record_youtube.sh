@@ -12,7 +12,7 @@ LIVE_URL=$1
 
 # Record the highest quality available by default
 FORMAT="${2:-best}"
-INTERVAL="${4:-10}"
+INTERVAL="${4:-100}"
 
 while true; do
   # Monitor live streams of specific channel

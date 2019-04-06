@@ -1,14 +1,14 @@
 #!/bin/bash
 # Twitch Live Stream Recorder
-
+FORMAT="${2:-best}"
+INTERVAL="${4:-110}"
 if [[ ! -n "$1" ]]; then
   echo "usage: $0 twitch_id [format] [loop|once] [interval] [savefolder]"
   exit 1
 fi
 
 # Record the highest quality available by default
-FORMAT="${2:-best}"
-INTERVAL="${4:-10}"
+
 
 while true; do
   # Monitor live streams of specific channel

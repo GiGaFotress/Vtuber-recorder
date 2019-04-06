@@ -1,6 +1,6 @@
 #!/bin/bash
 # TwitCasting Live Stream Recorder
-
+INTERVAL="${3:-120}"
 if [[ ! -n "$1" ]]; then
   echo "usage: $0 twitcasting_id [loop|once] [interval] [savefolder]"
   exit 1
@@ -12,7 +12,7 @@ if [[ ! -f "./livedl" ]]; then
   exit 1
 fi
 
-INTERVAL="${3:-10}"
+
 
 while true; do
   # Monitor live streams of specific user

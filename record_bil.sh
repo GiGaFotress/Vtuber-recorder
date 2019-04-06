@@ -1,7 +1,7 @@
 #!/bin/bash
 # Bil
-
-INTERVAL="${2:-100}"
+#$BIL $FORMAT $3 $INTERVAL $SAVEFOLDER&
+INTERVAL="${4:-130}"
 
 while true; do
   # Monitor live streams of specific channel
