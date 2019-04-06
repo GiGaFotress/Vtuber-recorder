@@ -15,14 +15,16 @@ TWITCH=$(grep "twitch.tv" "$1".txt|cut -c 23-)
 TWITCAST=$(grep "twitcast" "$1".txt|cut -c 24-)
 #OPENREC=$(grep "openrec" "$1".txt|grep -v https://www.openrec.tv/user/|cut -c 29-)
 
+if [[ ! -n "$Savefolder" ]]; then 
+  echo "no output dir"
+  exit 1
+fi
+
 if [ ! -d "$Savefolder" ]; then
   mkdir $Savefolder
 fi
 
-if[[ ! -n "$Savefolder" ]]; then 
-  echo"no output dir"
-  exit 1
-fi
+
 
 #youtube
 [[ -n "$YOUTUBE" ]] && ./record_youtube.sh $YOUTUBE $FORMAT $3 $INTERVAL $SAVEFOLDER &
