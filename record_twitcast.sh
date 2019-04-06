@@ -1,5 +1,6 @@
 #!/bin/bash
 # TwitCasting Live Stream Recorder
+cd $4
 INTERVAL="${3:-120}"
 if [[ ! -n "$1" ]]; then
   echo "usage: $0 twitcasting_id [loop|once] [interval] [savefolder]"

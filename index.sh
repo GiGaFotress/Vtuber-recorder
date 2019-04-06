@@ -35,7 +35,11 @@ fi
 #twitch twitch_id [format] [loop|once] [interval] [savefolder]
 [[ -n "$TWITCH" ]] && ./record_twitch.sh $TWITCH $FORMAT $3 $INTERVAL $SAVEFOLDER&
 
-#TWITCAST录制路径仍未解决
+#TWITCAST
+
+if [ ! -d "$SAVEFOLDER/livedl" ]; then
+  cp ./livedl $SAVEFOLDER
+fi
 [[ -n "$TWITCAST" ]] && ./record_twitcast.sh $TWITCAST  $3 $INTERVAL $SAVEFOLDER&
 #OPENREC
 #./record_openrec.sh $OPENRCE $FORAMT $3 $INTERVAL $SAVEFOLDER&
