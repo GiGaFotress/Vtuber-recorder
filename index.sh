@@ -6,7 +6,6 @@ if [[ ! -n "$1" ]]; then
   exit 1
 fi
 
-
 FORMAT="${2:-best}"
 INTERVAL="${4:-150}"
 SAVEFOLDER=$(grep "Savefolder" "$1".txt|cut -c 12-)
