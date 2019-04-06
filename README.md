@@ -37,4 +37,4 @@ VTB多平台全自动录制
 
 ------------------------------------------------------------
 
-感谢https://github.com/printempw/live-stream-recorder的基础脚本
+感谢https://github.com/printempw/live-stream-recorder 的基础脚本 
