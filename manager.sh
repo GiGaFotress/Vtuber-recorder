@@ -9,7 +9,7 @@ echo "Which one you want to kill?"
 read PID
 case $PID in
 1)
-[[ -n "$PID1" ]] && kill -s 9 $PID1;;;
+[[ -n "$PID1" ]] && kill -s 9 $PID1;;
 2)
 [[ -n "$PID2" ]] && kill -s 9 $PID2;;
 3)

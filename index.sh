@@ -8,12 +8,12 @@ fi
 
 FORMAT="${2:-best}"
 INTERVAL="${4:-150}"
-SAVEFOLDER=$(grep "Savefolder" "$1".txt|cut -c 12-)
-YOUTUBE=$(grep "youtube.com" "$1".txt)
-BIL=$(grep "bilibili.com" "$1".txt|egrep -o "[0-9]{2,}+")
-TWITCH=$(grep "twitch.tv" "$1".txt|cut -c 23-)
-TWITCAST=$(grep "twitcast" "$1".txt|cut -c 24-)
-#OPENREC=$(grep "openrec" "$1".txt|grep -v https://www.openrec.tv/user/|cut -c 29-)
+SAVEFOLDER=$(grep "Savefolder" ./config/"$1".txt|cut -c 12-)
+YOUTUBE=$(grep "youtube.com" ./config/"$1".txt)
+BIL=$(grep "bilibili.com" ./config/"$1".txt|egrep -o "[0-9]{2,}+")
+TWITCH=$(grep "twitch.tv" ./config/"$1".txt|cut -c 23-)
+TWITCAST=$(grep "twitcast" ./config/"$1".txt|cut -c 24-)
+#OPENREC=$(grep "openrec" ./config/"$1".txt|grep -v https://www.openrec.tv/user/|cut -c 29-)
 
 if [[ ! -n "$SAVEFOLDER" ]]; then 
   echo "no output dir"
