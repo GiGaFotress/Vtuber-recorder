@@ -26,13 +26,13 @@ fi
 
 #youtube
 [[ -n "$YOUTUBE" ]] && ./record_youtube.sh $YOUTUBE $FORMAT $3 $INTERVAL $SAVEFOLDER $1 &
-
+sleep 10
 #bil    
 [[ -n "$BIL" ]] && ./record_bil.sh $BIL $FORMAT $3 $INTERVAL $SAVEFOLDER $1 &
-
+sleep 10
 #twitch twitch_id [format] [loop|once] [interval] [savefolder]
 [[ -n "$TWITCH" ]] && ./record_twitch.sh $TWITCH $FORMAT $3 $INTERVAL $SAVEFOLDER $1 &
-
+sleep 10
 #TWITCAST
 
 if [ ! -d "$SAVEFOLDER/livedl" ]; then
