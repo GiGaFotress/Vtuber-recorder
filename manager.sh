@@ -40,21 +40,39 @@ CLEANPID4=$(grep $PID4 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID4/"d runnin
 CLEANPID2=$(grep $PID2 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID2/"d running.txt;
 CLEANPID3=$(grep $PID3 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID3/"d running.txt;;
 24)
-[[ -n "$PID2" ]] && kill -s 9 $PID2;[[ -n "$PID4" ]] && kill -s 9 $PID4;;
-
-
+[[ -n "$PID2" ]] && kill -s 9 $PID2;[[ -n "$PID4" ]] && kill -s 9 $PID4;
+CLEANPID2=$(grep $PID2 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID2/"d running.txt;
+CLEANPID4=$(grep $PID4 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID4/"d running.txt;;
 34)
-[[ -n "$PID3" ]] && kill -s 9 $PID3;[[ -n "$PID4" ]] && kill -s 9 $PID4;;
+[[ -n "$PID3" ]] && kill -s 9 $PID3;[[ -n "$PID4" ]] && kill -s 9 $PID4;
+CLEANPID3=$(grep $PID3 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID3/"d running.txt;
+CLEANPID4=$(grep $PID4 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID4/"d running.txt;;
 123)
-[[ -n "$PID1" ]] && kill -s 9 $PID1;[[ -n "$PID2" ]] && kill -s 9 $PID2;[[ -n "$PID3" ]] && kill -s 9 $PID3;;
+[[ -n "$PID1" ]] && kill -s 9 $PID1;[[ -n "$PID2" ]] && kill -s 9 $PID2;[[ -n "$PID3" ]] && kill -s 9 $PID3;
+CLEANPID1=$(grep $PID1 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID1/"d running.txt;
+CLEANPID2=$(grep $PID2 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID2/"d running.txt;
+CLEANPID3=$(grep $PID3 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID3/"d running.txt;;
 124)
 [[ -n "$PID1" ]] && kill -s 9 $PID1;[[ -n "$PID2" ]] && kill -s 9 $PID2;[[ -n "$PID4" ]] && kill -s 9 $PID4;;
+CLEANPID1=$(grep $PID1 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID1/"d running.txt;
+CLEANPID2=$(grep $PID2 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID2/"d running.txt;
+CLEANPID4=$(grep $PID4 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID4/"d running.txt;;
 134)
 [[ -n "$PID1" ]] && kill -s 9 $PID1;[[ -n "$PID3" ]] && kill -s 9 $PID3;[[ -n "$PID4" ]] && kill -s 9 $PID4;;
+CLEANPID1=$(grep $PID1 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID1/"d running.txt;
+CLEANPID3=$(grep $PID3 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID3/"d running.txt;
+CLEANPID4=$(grep $PID4 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID4/"d running.txt;;
 234)
 [[ -n "$PID2" ]] && kill -s 9 $PID2;[[ -n "$PID3" ]] && kill -s 9 $PID3;[[ -n "$PID4" ]] && kill -s 9 $PID4;;
+CLEANPID2=$(grep $PID2 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID2/"d running.txt;
+CLEANPID3=$(grep $PID3 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID3/"d running.txt;
+CLEANPID4=$(grep $PID4 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID4/"d running.txt;;
 1234)
 [[ -n "$PID1" ]] && kill -s 9 $PID1;[[ -n "$PID2" ]] && kill -s 9 $PID2;[[ -n "$PID3" ]] && kill -s 9 $PID3;[[ -n "$PID4" ]] && kill -s 9 $PID4;;
+CLEANPID1=$(grep $PID1 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID1/"d running.txt;
+CLEANPID2=$(grep $PID2 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID2/"d running.txt;
+CLEANPID3=$(grep $PID3 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID3/"d running.txt;
+CLEANPID4=$(grep $PID4 running.txt|sed -n '1p')&&sed  -i "/^$CLEANPID4/"d running.txt;;
 *) break
 ;;
 #K1=$([[ -n "$PID1" ]] && kill -s 9 $PID1)
