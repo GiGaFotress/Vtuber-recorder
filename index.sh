@@ -2,7 +2,7 @@
 #vtuber whole live recorder
 
 if [[ ! -n "$1" ]]; then
-  echo "usage: $0 [name] [format] [loop|once] [interval] "
+  echo "usage: $0 [name] [format]  "
   exit 1
 fi
 
@@ -27,22 +27,22 @@ if [ ! -d "$SAVEFOLDER" ]; then
 fi
 
 #youtube
-[[ -n "$YOUTUBE" ]] && ./record_youtube.sh $YOUTUBE $FORMAT $3 $INTERVAL $SAVEFOLDER $1 &
+[[ -n "$YOUTUBE" ]] && ./record_youtube.sh $YOUTUBE $FORMAT $LOOP $INTERVAL $SAVEFOLDER $1 &
 sleep 10
 #bil    
-[[ -n "$BIL" ]] && ./record_bil.sh $BIL $FORMAT $3 $INTERVAL $SAVEFOLDER $1 &
+[[ -n "$BIL" ]] && ./record_bil.sh $BIL $FORMAT $LOOP $INTERVAL $SAVEFOLDER $1 &
 sleep 10
 #twitch twitch_id [format] [loop|once] [interval] [savefolder]
-[[ -n "$TWITCH" ]] && ./record_twitch.sh $TWITCH $FORMAT $3 $INTERVAL $SAVEFOLDER $1 &
+[[ -n "$TWITCH" ]] && ./record_twitch.sh $TWITCH $FORMAT $LOOP $INTERVAL $SAVEFOLDER $1 &
 sleep 10
 #TWITCAST
 
 if [ ! -d "$SAVEFOLDER/livedl" ]; then
   cp ./livedl $SAVEFOLDER
 fi
-[[ -n "$TWITCAST" ]] && ./record_twitcast.sh $TWITCAST  $3 $INTERVAL $SAVEFOLDER $1 &
+[[ -n "$TWITCAST" ]] && ./record_twitcast.sh $TWITCAST  $LOOP $INTERVAL $SAVEFOLDER $1 &
 #OPENREC
-#./record_openrec.sh $OPENRCE $FORAMT $3 $INTERVAL $SAVEFOLDER&
+#./record_openrec.sh $OPENRCE $FORAMT $LOOP $INTERVAL $SAVEFOLDER&
 wait
 
 
