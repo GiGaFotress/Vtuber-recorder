@@ -19,7 +19,7 @@ while true; do
     echo "$LOG_PREFIX Try to get current live stream of twitch.tv/$1"
 
     # Get the m3u8 address with streamlink
-    M3U8_URL=$(streamlink --stream-url "$1" "$FORMAT")
+    M3U8_URL=$(streamlink --stream-url "https://www.twitch.tv/$1" "$FORMAT")
     (echo "$M3U8_URL" | grep -q ".m3u8") && break
 
     echo "$LOG_PREFIX The stream is not available now."
@@ -27,8 +27,8 @@ while true; do
     sleep $INTERVAL
   done
 
-	TITLE=$(youtube-dl --get-description $1)
-  ID=$(youtube-dl --get-id $1)
+	TITLE=$(youtube-dl --get-description "https://www.twitch.tv/$1")
+  ID=$(youtube-dl --get-id "https://www.twitch.tv/$1")
 
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="twitch_${ID}_${TITLE}_$(date +"%Y%m%d_%H%M%S").ts"
