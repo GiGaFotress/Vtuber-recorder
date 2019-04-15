@@ -9,6 +9,8 @@ fi
 FORMAT="${2:-best}"
 INTERVAL="${4:-150}"
 SAVEFOLDER=$(grep "Savefolder" ./config/"$1".txt|cut -c 12-)
+INTERVAL=$(grep "Checktime" ./config/"$1".txt|cut -c 11-)
+LOOP=$(grep "LoopOrOnce" ./config/"$1".txt|cut -c 12-)
 YOUTUBE=$(grep "youtube.com" ./config/"$1".txt)
 BIL=$(grep "bilibili.com" ./config/"$1".txt|egrep -o "[0-9]{2,}+")
 TWITCH=$(grep "twitch.tv" ./config/"$1".txt|cut -c 23-)
