@@ -8,13 +8,13 @@ if [[ ! -n "$1" ]]; then
   exit 1
 fi
 
-# Construct full URL if only channel id given
-LIVE_URL=$1
-[[ "$1" == "http"* ]] || LIVE_URL="https://www.youtube.com/channel/$1/live"
 
 # Record the highest quality available by default
 FORMAT="${2:-best}"
 INTERVAL="${4:-100}"
+# Construct full URL if only channel id given
+LIVE_URL=$1
+[[ "$1" == "http"* ]] || LIVE_URL="https://www.youtube.com/channel/$1/live"
 
 while true; do
   # Monitor live streams of specific channel
@@ -25,17 +25,16 @@ while true; do
     # Try to get video id and title of current live stream.
     # Add parameters about playlist to avoid downloading
     # the full video playlist uploaded by channel accidently.
-    METADATA=$(youtube-dl --get-id --get-title --get-description \
-      --no-playlist --playlist-items 1 \
-      --match-filter is_live "$LIVE_URL" 2>/dev/null)
-    [[ -n "$METADATA" ]] && break
-
+  curl -s  https://www.youtube.com/channel/$1|grep -q "配信中" && break
     echo "$LOG_PREFIX The stream is not available now."
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
   done
+    METADATA=$(youtube-dl --get-id --get-title --get-description \
+      --no-playlist --playlist-items 1 \
+      --match-filter is_live "$LIVE_URL" 2>/dev/null)
 	#Savetitle
-  Title=$(echo "$METADATA" | sed -n '1p')
+  Title=$(echo "$METADATA" | sed -n '1p'|sed 's/[()\-]//g')
 
   # Extract video id of live stream
   ID=$(echo "$METADATA" | sed -n '2p')
@@ -53,8 +52,8 @@ while true; do
   # ffmpeg -i "$M3U8_URL" -codec copy -f mpegts "savevideo/$FNAME" > "savevideo/$FNAME.log" 2>&1
 
   # Use streamlink to record for HLS seeking support
-  streamlink --hls-live-restart --loglevel trace -o "$5$FNAME" \
-    "https://www.youtube.com/watch?v=${ID}" "$FORMAT" > "$FNAME" 2>&1
+M3U8_URL=$(streamlink --stream-url "https://www.youtube.com/watch?v=${ID}" "$FORMAT")
+  ffmpeg  -reconnect 1  -reconnect_streamed 1 -reconnect_delay_max 15  -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "$5$FNAME.log" 2>&1    
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")

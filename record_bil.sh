@@ -12,10 +12,7 @@ while true; do
     echo "$LOG_PREFIX Try to get current live stream of $1"
 
     # Get the m3u8 or flv address with streamlink
-    STREAM_URL=$(streamlink --stream-url "https://live.bilibili.com/$1" "best")
-    (echo "$STREAM_URL" | grep -q ".m3u8") && break
-    (echo "$STREAM_URL" | grep -q ".flv") && break
-
+	curl -s "https://api.live.bilibili.com/room/v1/Room/get_info?room_id=$1&from=room"|grep -q '\"live_status\"\:1'&& break
     echo "$LOG_PREFIX The stream is not available now."
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
@@ -23,7 +20,7 @@ while true; do
 
     
     #Savetitle
-	ID=$(you-get -i https://live.bilibili.com/$1|sed -n '2p'|cut -c 22-|cut -d '.' -f 1)
+	ID=$(you-get -i https://live.bilibili.com/$1|sed -n '2p'|cut -c 22-|cut -d '.' -f 1|sed 's/[()/\-]//g')
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="bil_$1_${ID}_$(date +"%Y%m%d_%H%M%S").ts"
   echo "$LOG_PREFIX Start recording, stream saved to \"$FNAME\"."
