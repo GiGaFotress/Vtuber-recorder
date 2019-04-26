@@ -1,9 +1,7 @@
-Savefolder:/home/centos/Recorder/savevideo/yumeno_shiori
-Checktime:200
+Savefolder:/home/centos/Recorder/savevideo/yumeno_shiori/
+Checktime:180
 LoopOrOnce:loop
-https://www.youtube.com/channel/UCH0ObmokE-zUOeihkKwWySA/live
+https://www.youtube.com/channel/UCH0ObmokE-zUOeihkKwWySA
 https://www.twitch.tv/yumeno_shiori
 https://twitcasting.tv/c:yumeno_shiori
 https://live.bilibili.com/14052636
-
-
