@@ -4,7 +4,7 @@ VTB多平台全自动录制
 
 环境依赖:ffmpeg,streamlink,biliroku-lite,livedl,youget,youtube-dl
 
-自动上传和清理依赖:rclone,crontab
+自动上传和清理依赖:rclone(这玩意极占内存,请注意低于2G内存的机器开启1G以上swap),crontab
 
 -----------------------------------------------------
 使用方法
