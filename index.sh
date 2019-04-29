@@ -15,10 +15,7 @@ YOUTUBE=$(grep "youtube.com" ./config/"$1".txt|cut -c 33-)
 BIL=$(grep "bilibili.com" ./config/"$1".txt|egrep -o "[0-9]{2,}+")
 TWITCH=$(grep "twitch.tv" ./config/"$1".txt|cut -c 23-)
 TWITCAST=$(grep "twitcast" ./config/"$1".txt|cut -c 24-)
-YOUTUBESAVE=$(youtube/)
-BILSAVE=$(bil/)
-TWITCHSAVE=$(twitch/)
-TWITCASTSAVE=$(twitchcast/)
+
 
 
 
@@ -26,38 +23,45 @@ TWITCASTSAVE=$(twitchcast/)
 
 
 
-if [ ! -d "$SAVEFOLDER" ]; then
-  mkdir $SAVEFOLDER
+if [ ! -d "${SAVEFOLDER}" ]; then
+  mkdir ${SAVEFOLDER}
 fi
 
 #youtube
-if [ ! -d "$SAVEFOLDER$YOUTUBESAVE" ]; then
-  mkdir $SAVEFOLDER$YOUTUBESAVE
+
+if [[ -n "$YOUTUBE" ]]; then  
+[[ ! -d "${SAVEFOLDER}youtube/" ]]&&mkdir ${SAVEFOLDER}youtube/ 
+sleep 1
+./record_youtube.sh $YOUTUBE $FORMAT $LOOP $INTERVAL ${SAVEFOLDER}youtube/ $1 &
+sleep 5
 fi
-[[ -n "$YOUTUBE" ]] && ./record_youtube.sh $YOUTUBE $FORMAT $LOOP $INTERVAL $SAVEFOLDER $1 &
-sleep 10
+
 #bil    
-if [ ! -d "$SAVEFOLDER$BILSAVE" ]; then
-  mkdir $SAVEFOLDER$BILSAV
+if [[ -n "$BIL" ]]; then
+[[ ! -d "${SAVEFOLDER}bil/" ]]&&mkdir ${SAVEFOLDER}bil/
+sleep 1
+./record_bil.sh $BIL $FORMAT $LOOP $INTERVAL ${SAVEFOLDER}bil/ $1 &
+sleep 5
 fi
-[[ -n "$BIL" ]] && ./record_bil.sh $BIL $FORMAT $LOOP $INTERVAL $SAVEFOLDER$BILSAVE $1 &
-sleep 10
+
 #twitch twitch_id [format] [loop|once] [interval] [savefolder]
-if [ ! -d "$SAVEFOLDER$TWITCHSAVE" ]; then
-  mkdir $SAVEFOLDER$TWITCHSAVE
+if [[ -n "$TWITCH" ]]; then
+[[ ! -d "${SAVEFOLDER}twitch/" ]]&&mkdir ${SAVEFOLDER}twitch/
+sleep 1
+./record_twitch.sh $TWITCH $FORMAT $LOOP $INTERVAL ${SAVEFOLDER}twitch/ $1 &
+sleep 5
 fi
-[[ -n "$TWITCH" ]] && ./record_twitch.sh $TWITCH $FORMAT $LOOP $INTERVAL $SAVEFOLDER$TWITCHSAVE $1 &
-sleep 10
 #TWITCAST
-if [ ! -d "$SAVEFOLDER$TWITCASTSAVE" ]; then
-  mkdir $SAVEFOLDER$TWITCASTSAVE
+if [[ -n "$TWITCAST" ]]; then
+[[ ! -d "${SAVEFOLDER}twitcast/" ]]&&mkdir ${SAVEFOLDER}twitcast/
+sleep 1
+[[ ! -d "${SAVEFOLDER}twitcast/livedl" ]]&&cp ./livedl ${SAVEFOLDER}twitcast/
+sleep 5
+./record_twitcast.sh $TWITCAST  $LOOP $INTERVAL ${SAVEFOLDER}twitcast/ $1 &
+sleep 3
 fi
-if [ ! -d "$SAVEFOLDER/livedl" ]; then
-  cp ./livedl $SAVEFOLDER$TWITCASTSAVE
-fi
-[[ -n "$TWITCAST" ]] && ./record_twitcast.sh $TWITCAST  $LOOP $INTERVAL $SAVEFOLDER$TWITCASTSAVE $1 &
 #OPENREC
-#./record_openrec.sh $OPENRCE $FORAMT $LOOP $INTERVAL $SAVEFOLDER&
+#./record_openrec.sh $OPENRCE $FORAMT $LOOP $INTERVAL ${SAVEFOLDER}&
 wait
 
 
