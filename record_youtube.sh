@@ -32,9 +32,9 @@ while true; do
   done
     METADATA=$(youtube-dl --get-id --get-title --get-description \
       --no-playlist --playlist-items 1 \
-      --match-filter is_live "$LIVE_URL" 2>/dev/null)
+      --match-filter is_live "${LIVE_URL}" 2>/dev/null)
 	#Savetitle
-  Title=$(echo "$METADATA" | sed -n '1p'|sed 's/[()/\-!$]//g')
+  Title=$(echo "$METADATA" | sed -n '1p'|sed 's/[()/\\!-\$]//g')
 
   # Extract video id of live stream
   ID=$(echo "$METADATA" | sed -n '2p')
