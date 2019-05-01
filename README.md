@@ -75,5 +75,10 @@ VTB多平台全自动录制
 
 
 ------------------------------------------------------------
+screen调试
+
+在screen配置文件/etc/screenrc最后添加下面一行：
+
+logfile /tmp/screenlog_%t.log
 
 感谢https://github.com/printempw/live-stream-recorder 的基础脚本 
