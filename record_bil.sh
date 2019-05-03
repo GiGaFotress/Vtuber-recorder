@@ -20,7 +20,7 @@ while true; do
 
     
     #Savetitle
-	ID=$(you-get -i https://live.bilibili.com/$1|sed -n '2p'|cut -c 22-|cut -d '.' -f 1|sed 's/[()/\-]//g')
+	ID=$(you-get -i https://live.bilibili.com/$1|sed -n '2p'|cut -c 22-|cut -d '.' -f 1|sed 's/[()/\\!-\$]//g')
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="bil_$1_${ID}_$(date +"%Y%m%d_%H%M%S").ts"
   echo "$LOG_PREFIX Start recording, stream saved to \"$FNAME\"."

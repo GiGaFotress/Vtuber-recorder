@@ -22,8 +22,8 @@ while true; do
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
   done
-  TITLE=$(youtube-dl --get-description "https://www.twitch.tv/$1"|sed 's/[()/\-]//g')
-  ID=$(youtube-dl --get-id "https://www.twitch.tv/$1"|sed 's/[()/\-]//g')
+  TITLE=$(youtube-dl --get-description "https://www.twitch.tv/$1"|sed 's/[()/\\!-\$]//g')
+  ID=$(youtube-dl --get-id "https://www.twitch.tv/$1"|sed 's/[()/\\!-\$]//g')
 
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="twitch_${ID}_${TITLE}_$(date +"%Y%m%d_%H%M%S").ts"

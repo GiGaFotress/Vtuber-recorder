@@ -5,7 +5,7 @@ for ((NUM=$(ls /home/centos/Recorder/config|grep -c .txt); NUM>0; --NUM))
 do
 NAME=$(ls /home/centos/Recorder/config|grep .txt|sed 's/.txt//g'|sed -n "$NUM"p)
 sleep 1
-screen -dmS $NAME /home/centos/Recorder/index.sh $NAME
+screen -L -t $NAME -dmS $NAME /home/centos/Recorder/index.sh $NAME
 sleep 1
 echo $NAME
 done
