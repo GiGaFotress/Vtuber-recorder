@@ -27,7 +27,10 @@ while true; do
   echo "$LOG_PREFIX Use command \"tail -f $FNAME.log\" to track recording progress."
 
   # Start recording
-  biliroku -n $1 -o "$5$FNAME"  > "$5$FNAME.log" 2>&1
+  #biliroku -n $1 -o "$5$FNAME"  > "$5$FNAME.log" 2>&1
+
+  M3U8_URL=$(streamlink --stream-url "https://live.bilibili.com/$1" "$FORMAT")
+  ffmpeg  -reconnect 1  -reconnect_streamed 1 -reconnect_delay_max 15  -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "$5$FNAME.log" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
