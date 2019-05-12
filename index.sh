@@ -78,9 +78,7 @@ function onCtrlC () {
     CLEANPID1=$(grep $PID1 running.txt|sed -n '1p') && sed  -i "/^$CLEANPID1/"d running.txt;
     CLEANPID2=$(grep $PID2 running.txt|sed -n '1p') && sed  -i "/^$CLEANPID2/"d running.txt;
     CLEANPID3=$(grep $PID3 running.txt|sed -n '1p') && sed  -i "/^$CLEANPID3/"d running.txt;
-    CLEANPID4=$(grep $PID4 running.txt|sed -n '1p') && sed  -i "/^$CLEANPID4/"d running.txt;;
-
-
+    CLEANPID4=$(grep $PID4 running.txt|sed -n '1p') && sed  -i "/^$CLEANPID4/"d running.txt;
 }
 
 
