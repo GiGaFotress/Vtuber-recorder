@@ -7,7 +7,7 @@ if [[ ! -n "$1" ]]; then
 fi
 
 FORMAT="${2:-best}"
-INTERVAL="${4:-150}"
+INTERVAL="${4:-15}"
 SAVEFOLDER=$(grep "Savefolder" ./config/"$1".txt|cut -c 12-)
 INTERVAL=$(grep "Checktime" ./config/"$1".txt|cut -c 11-)
 LOOP=$(grep "LoopOrOnce" ./config/"$1".txt|cut -c 12-)
