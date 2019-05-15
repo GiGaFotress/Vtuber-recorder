@@ -1,0 +1,6 @@
+Savefolder:/home/centos/Vtuber-recorder/savevideo/matsuri/
+Checktime:20
+LoopOrOnce:loop
+https://www.youtube.com/channel/UCQ0UDLQCjY0rmuxCDE38FGg
+https://live.bilibili.com/13946381
+https://twitcasting.tv/natsuiromatsuri

@@ -1,0 +1,6 @@
+Savefolder:/home/centos/Vtuber-recorder/savevideo/takatsuki_ritsu/
+Checktime:15
+LoopOrOnce:loop
+https://www.youtube.com/channel/UCL9dLCVvHyMiqjp2RDgowqQ
+https://twitcasting.tv/re2_takatsuki
+https://live.bilibili.com/947447

@@ -1,0 +1,5 @@
+Savefolder:/home/centos/Vtuber-recorder/savevideo/fubuki/
+Checktime:10
+LoopOrOnce:loop
+https://www.youtube.com/channel/UCdn5BQ06XqgXoAxIhbqw5Rg
+https://live.bilibili.com/11588230

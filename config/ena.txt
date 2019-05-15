@@ -1,0 +1,5 @@
+Savefolder:/home/centos/Vtuber-recorder/savevideo/ena/
+Checktime:10
+LoopOrOnce:loop
+https://www.youtube.com/channel/UCAjPpHpxhxZF9EiROXwr9kQ
+https://www.twitch.tv/ena_vtuber

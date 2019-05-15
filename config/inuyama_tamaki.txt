@@ -1,0 +1,6 @@
+Savefolder:/home/centos/Vtuber-recorder/savevideo/inuyama_tamaki/
+Checktime:18
+LoopOrOnce:loop
+https://www.youtube.com/channel/UC8NZiqKx6fsDT3AVcMiVFyA
+https://live.bilibili.com/4634167
+https://twitcasting.tv/norioo_ 

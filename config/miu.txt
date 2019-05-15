@@ -1,0 +1,6 @@
+Savefolder:/home/centos/Vtuber-recorder/savevideo/miu/
+Checktime:15
+LoopOrOnce:loop
+https://www.youtube.com/channel/UChN7P9OhRltW3w9IesC92PA
+https://twitcasting.tv/morinaga_miu
+https://live.bilibili.com/7962050

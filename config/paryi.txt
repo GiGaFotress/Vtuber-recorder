@@ -1,0 +1,5 @@
+Savefolder:/home/centos/Vtuber-recorder/savevideo/paryi/
+Checktime:20
+LoopOrOnce:loop
+https://www.youtube.com/channel/UCrhx4PaF3uIo9mDcTxHnmIg
+https://live.bilibili.com/4895312

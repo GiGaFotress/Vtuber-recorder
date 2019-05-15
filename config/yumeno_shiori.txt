@@ -1,5 +1,5 @@
-Savefolder:/home/centos/Recorder/savevideo/yumeno_shiori/
-Checktime:180
+Savefolder:/home/centos/Vtuber-recorder/savevideo/yumeno_shiori/
+Checktime:15
 LoopOrOnce:loop
 https://www.youtube.com/channel/UCH0ObmokE-zUOeihkKwWySA
 https://www.twitch.tv/yumeno_shiori

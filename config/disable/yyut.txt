@@ -1,0 +1,4 @@
+Savefolder:/home/centos/Recorder/savevideo/yyut/
+Checktime:200
+LoopOrOnce:loop
+https://www.youtube.com/channel/UCNMG8dXjgqxS94dHljP9duQ

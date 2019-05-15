@@ -1,0 +1,6 @@
+Savefolder:/home/centos/Vtuber-recorder/savevideo/hanazono_serena/
+Checktime:10
+LoopOrOnce:loop
+https://www.youtube.com/channel/UCRXBTd80F5IIWWY4HatJ5Ug
+https://twitcasting.tv/hanazono_serena
+https://live.bilibili.com/14327465

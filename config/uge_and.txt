@@ -1,0 +1,4 @@
+Savefolder:/home/centos/Vtuber-recorder/savevideo/uge_and/
+Checktime:20
+LoopOrOnce:loop
+https://www.youtube.com/channel/UC3EhsuKdEkI99TWZwZgWutg
