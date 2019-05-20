@@ -8,6 +8,8 @@ if [[ ! -n "$1" ]]; then
   echo "usage: $0 twitcasting_id [loop|once] [interval] [savefolder]"
   exit 1
 fi
+[[ ! -d "${SAVEFOLDER}twitcast/livedl" ]]&&cp ./livedl ${SAVEFOLDER}twitcast/
+sleep 5
 
 if [[ ! -f "./livedl" ]]; then
   echo "This script depends on livedl (https://github.com/himananiito/livedl)."

@@ -25,7 +25,8 @@ while true; do
     # Try to get video id and title of current live stream.
     # Add parameters about playlist to avoid downloading
     # the full video playlist uploaded by channel accidently.
-  curl -s  https://www.youtube.com/channel/$1|grep -q "ライブ配信中" && break
+ #curl -s  https://www.youtube.com/channel/$1|grep -q "ライブ配信中" && break
+ curl -s  https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' && break
     echo "$LOG_PREFIX The stream is not available now."
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
