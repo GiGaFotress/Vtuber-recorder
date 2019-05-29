@@ -25,8 +25,11 @@ while true; do
     # Try to get video id and title of current live stream.
     # Add parameters about playlist to avoid downloading
     # the full video playlist uploaded by channel accidently.
- #curl -s  https://www.youtube.com/channel/$1|grep -q "ライブ配信中" && break
- curl -s  https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' && break
+
+  #curl -s  https://www.youtube.com/channel/$1|grep -q "ライブ配信中" && break
+ #curl -s -N https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' && break
+wget -q -O- https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' && break
+
     echo "$LOG_PREFIX The stream is not available now."
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
@@ -43,7 +46,7 @@ while true; do
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="youtube_${Title}_$(date +"%Y%m%d_%H%M%S")_${ID}.ts"
   # Also save the metadate to file
-  echo "$METADATA" > "$5$FNAME.info.txt"
+  echo "$METADATA" > "${5}/log/youtube/${FNAME}.info.txt"
 
   # Print logs
   echo "$LOG_PREFIX Start recording, metadata saved to \"$FNAME.info.txt\"."
@@ -53,8 +56,8 @@ while true; do
   # ffmpeg -i "$M3U8_URL" -codec copy -f mpegts "savevideo/$FNAME" > "savevideo/$FNAME.log" 2>&1
 
   # Use streamlink to record for HLS seeking support
-M3U8_URL=$(streamlink --stream-url "https://www.youtube.com/watch?v=${ID}" "$FORMAT")
-  ffmpeg  -reconnect 1  -reconnect_streamed 1 -reconnect_delay_max 15  -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "$5$FNAME.log" 2>&1    
+M3U8_URL=$(streamlink --stream-url "https://www.youtube.com/watch?v=${ID}" "best")
+  ffmpeg   -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "${5}/log/${FNAME}.log" 2>&1    
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")

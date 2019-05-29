@@ -1,5 +1,7 @@
 #!/bin/bash
 # Twitch Live Stream Recorder
+TWITCHPID="$$"
+echo "$6:TWITCH   $TWITCHPID" >> "./running.txt"
 
 if [[ ! -n "$1" ]]; then
   echo "usage: $0 twitch_id [format] [loop|once] [interval] [savefolder]"
@@ -17,7 +19,8 @@ while true; do
     echo "$LOG_PREFIX Try to get current live stream of twitch.tv/$1"
 
     # Get the m3u8 address with streamlink
-	curl -s https://api.twitch.tv/kraken/streams/$1?client_id=(key)|grep -q live&& break
+	#curl -s https://api.twitch.tv/kraken/streams/$1?client_id=key|grep -q live&& break
+	wget -q -O-  https://api.twitch.tv/kraken/streams/$1?client_id=key|grep -q live&& break
     echo "$LOG_PREFIX The stream is not available now."
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
@@ -32,7 +35,7 @@ while true; do
 
   # Start recording
    M3U8_URL=$(streamlink --stream-url "https://www.twitch.tv/$1" "$FORMAT")
-  ffmpeg  -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 15  -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "$5$FNAME.log" 2>&1
+  ffmpeg   -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "${5}/log/${FNAME}.log"  2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")

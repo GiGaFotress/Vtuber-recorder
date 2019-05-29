@@ -12,7 +12,8 @@ while true; do
     echo "$LOG_PREFIX Try to get current live stream of $1"
 
     # Get the m3u8 or flv address with streamlink
-	curl -s "https://api.live.bilibili.com/room/v1/Room/get_info?room_id=$1&from=room"|grep -q '\"live_status\"\:1'&& break
+	#curl -s "https://api.live.bilibili.com/room/v1/Room/get_info?room_id=$1&from=room"|grep -q '\"live_status\"\:1'&& break
+	wget -q -O-  "https://api.live.bilibili.com/room/v1/Room/get_info?room_id=$1&from=room"|grep -q '\"live_status\"\:1'&& break
     echo "$LOG_PREFIX The stream is not available now."
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
@@ -27,10 +28,8 @@ while true; do
   echo "$LOG_PREFIX Use command \"tail -f $FNAME.log\" to track recording progress."
 
   # Start recording
-  #biliroku -n $1 -o "$5$FNAME"  > "$5$FNAME.log" 2>&1
-
-  M3U8_URL=$(streamlink --stream-url "https://live.bilibili.com/$1" "$FORMAT")
-  ffmpeg  -reconnect 1  -reconnect_streamed 1 -reconnect_delay_max 15  -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "$5$FNAME.log" 2>&1
+  M3U8_URL=$(streamlink --stream-url "https://live.bilibili.com/$1" "best")
+   ffmpeg  -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "${5}/log/${FNAME}.livedl.log" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
