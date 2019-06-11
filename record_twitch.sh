@@ -35,7 +35,7 @@ while true; do
 
   # Start recording
    M3U8_URL=$(streamlink --stream-url "https://www.twitch.tv/$1" "$FORMAT")
-  ffmpeg   -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "${5}/log/${FNAME}.log"  2>&1
+  ffmpeg   -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "${5}log/${FNAME}.log"  2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
