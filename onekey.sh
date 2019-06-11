@@ -9,6 +9,7 @@ root(){
 #输入twitchkey
 #获取绝对路径后https://blog.csdn.net/10km/article/details/51906821
 python(){
+timedatectl set-timezone Asia/Shanghai
  yum -y install epel-release
  yum -y install https://centos7.iuscommunity.org/ius-release.rpm
  yum -y install python36
@@ -29,7 +30,7 @@ sed -i 's/python/python2/g' /usr/libexec/urlgrabber-ext-down
 #封装FFmpeg
 ffmpeg(){
 cd /
-yum -y install golang wget git unzip screen
+yum -y install golang wget git unzip screen psmisc
 wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
 tar -xvf ffmpeg-release-amd64-static.tar.xz
 rm -rf ffmpeg-release-amd64-static.tar.xz
@@ -56,6 +57,7 @@ cd ./Vtuber-recorder
 sed -i 's/key/$TWITCHAPIKEY/g' record_twitch.sh
 #https://www.zhukun.net/archives/8137
 #运行log保存(变量代替目录名字)
+echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_\%t.log" >> /etc/screenrc
 }
 rclone()
 {
@@ -63,8 +65,8 @@ curl https://rclone.org/install.sh | sudo bash
 sed -i 's/FOLDER/$RECFOLDER/g' rcloneupload.sh
 sed -i 's/FOLDER/$RECFOLDER/g' clean.sh
 sed -i 's/FOLDER/$RECFOLDER/g' del12h.sh
-(crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" > "$RECFOLDER/Vtuber-recorder/log/rclone$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
-(crontab -l ; echo "* */3 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" > "$RECFOLDER/Vtuber-recorder/log/del12h$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
+(crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" > "$RECFOLDER/Vtuber-recorder/log/rclone\$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
+(crontab -l ; echo "* */2 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" > "$RECFOLDER/Vtuber-recorder/log/del12h\$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
 (crontab -l ; echo "*/1 * * * * flock -xn /tmp/test2.lock -c "$RECFOLDER/Vtuber-recorder/clean.sh" >/dev/null 2>&1") | crontab -
 }
 
