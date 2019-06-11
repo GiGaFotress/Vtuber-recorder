@@ -56,16 +56,16 @@ cd ./Vtuber-recorder
 sed -i 's/key/$TWITCHAPIKEY/g' record_twitch.sh
 #https://www.zhukun.net/archives/8137
 #运行log保存(变量代替目录名字)
+}
+rclone()
+{
+curl https://rclone.org/install.sh | sudo bash
+sed -i 's/FOLDER/$RECFOLDER/g' rcloneupload.sh
+sed -i 's/FOLDER/$RECFOLDER/g' clean.sh
+sed -i 's/FOLDER/$RECFOLDER/g' del12h.sh
 (crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" > "$RECFOLDER/Vtuber-recorder/log/rclone$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
 (crontab -l ; echo "* */3 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" > "$RECFOLDER/Vtuber-recorder/log/del12h$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
 (crontab -l ; echo "*/1 * * * * flock -xn /tmp/test2.lock -c "$RECFOLDER/Vtuber-recorder/clean.sh" >/dev/null 2>&1") | crontab -
-
-
-
-
-#flock -xn /tmp/test1.lock -c "/home/centos/Vtuber-recorder/del12h.sh" > "/home/centos/Vtuber-recorder/log/del12h$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1
-#*/20 * * * * flock -xn /tmp/test2.lock -c "/home/centos/Vtuber-recorder/warndel.sh"
-#*/1 * * * * flock -xn /tmp/test3.lock -c "/home/centos/Vtuber-recorder/clean.sh"
 }
 
 #最后运行
@@ -86,6 +86,7 @@ python
 ffmpeg
 goinstall
 gitcode
+rclone
 bbr
 }
 main
