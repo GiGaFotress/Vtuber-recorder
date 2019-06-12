@@ -65,8 +65,8 @@ curl https://rclone.org/install.sh | sudo bash
 sed -i 's/FOLDER/$RECFOLDER/g' rcloneupload.sh
 sed -i 's/FOLDER/$RECFOLDER/g' clean.sh
 sed -i 's/FOLDER/$RECFOLDER/g' del12h.sh
-(crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" > "$RECFOLDER/Vtuber-recorder/log/rclone\$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
-(crontab -l ; echo "* */2 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" > "$RECFOLDER/Vtuber-recorder/log/del12h\$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
+(crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" >/dev/null 2>&1") | crontab -
+(crontab -l ; echo "* */2 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" >/dev/null 2>&1") | crontab -
 (crontab -l ; echo "*/1 * * * * flock -xn /tmp/test2.lock -c "$RECFOLDER/Vtuber-recorder/clean.sh" >/dev/null 2>&1") | crontab -
 }
 
