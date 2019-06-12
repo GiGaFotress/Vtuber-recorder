@@ -55,6 +55,9 @@ chmod -R 777 ./Vtuber-recorder
 #添加twitch申请的apikey
 cd ./Vtuber-recorder
 sed -i "s/key/$TWITCHAPIKEY/g" record_twitch.sh
+sed -i "s/folder/$RECFOLDER/g" rcloneupload.sh
+sed -i "s/folder/$RECFOLDER/g" clean.sh
+sed -i "s/folder/$RECFOLDER/g" del12h.sh
 #https://www.zhukun.net/archives/8137
 #运行log保存(变量代替目录名字)
 echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_\%t.log" >> /etc/screenrc
@@ -62,9 +65,6 @@ echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_\%t.log" >> /etc/screenrc
 rclone()
 {
 curl https://rclone.org/install.sh | sudo bash
-sed -i "s/folder/$RECFOLDER/g" rcloneupload.sh
-sed -i "s/folder/$RECFOLDER/g" clean.sh
-sed -i "s/folder/$RECFOLDER/g" del12h.sh
 (crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" >/dev/null 2>&1") | crontab -
 (crontab -l ; echo "* */2 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" >/dev/null 2>&1") | crontab -
 (crontab -l ; echo "*/1 * * * * flock -xn /tmp/test2.lock -c "$RECFOLDER/Vtuber-recorder/clean.sh" >/dev/null 2>&1") | crontab -
