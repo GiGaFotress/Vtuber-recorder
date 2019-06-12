@@ -1,4 +1,4 @@
-find FOLDER/Vtuber-recorder/savevideo/  -maxdepth 3    -name "*.*"  -size 0 -type f  -exec ls -l  {} \ >> "FOLDER/Vtuber-recorder/log/rclone$(date +"[%Y-%m-%d-%H]").log" 2>&1
+find FOLDER/Vtuber-recorder/savevideo/  -maxdepth 3    -name "*.*"  -size 0 -type f  -exec ls -l  {} \ > "FOLDER/Vtuber-recorder/log/rclone$(date +"[%Y-%m-%d-%H]").log" 2>&1
 find FOLDER/Vtuber-recorder/savevideo/ -maxdepth 3 -name "*.*" -size 0 -type f -delete >> "FOLDER/Vtuber-recorder/log/rclone$(date +"[%Y-%m-%d-%H]").log" 2>&1
 find FOLDER/Vtuber-recorder/ -maxdepth 3    -name "*.ts.log"   -type f -size -35k  -exec ls -l  {} \ >> "FOLDER/Vtuber-recorder/log/rclone$(date +"[%Y-%m-%d-%H]").log" 2>&1
 find FOLDER/Vtuber-recorder/ -maxdepth 3    -name "*.ts.log"   -type f -size -35k  -delete  >> "FOLDER/Vtuber-recorder/log/rclone$(date +"[%Y-%m-%d-%H]").log" 2>&1
