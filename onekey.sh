@@ -62,9 +62,9 @@ echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_\%t.log" >> /etc/screenrc
 rclone()
 {
 curl https://rclone.org/install.sh | sudo bash
-sed -i 's/FOLDER/$RECFOLDER/g' rcloneupload.sh
-sed -i 's/FOLDER/$RECFOLDER/g' clean.sh
-sed -i 's/FOLDER/$RECFOLDER/g' del12h.sh
+sed -i "s/FOLDER/$RECFOLDER/g" rcloneupload.sh
+sed -i "s/FOLDER/$RECFOLDER/g" clean.sh
+sed -i "s/FOLDER/$RECFOLDER/g" del12h.sh
 (crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" >/dev/null 2>&1") | crontab -
 (crontab -l ; echo "* */2 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" >/dev/null 2>&1") | crontab -
 (crontab -l ; echo "*/1 * * * * flock -xn /tmp/test2.lock -c "$RECFOLDER/Vtuber-recorder/clean.sh" >/dev/null 2>&1") | crontab -
