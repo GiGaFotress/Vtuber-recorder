@@ -68,6 +68,11 @@ curl https://rclone.org/install.sh | sudo bash
 (crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" >/dev/null 2>&1") | crontab -
 (crontab -l ; echo "* */2 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" >/dev/null 2>&1") | crontab -
 (crontab -l ; echo "*/1 * * * * flock -xn /tmp/test2.lock -c "$RECFOLDER/Vtuber-recorder/clean.sh" >/dev/null 2>&1") | crontab -
+dd if=/dev/zero of=/var/swapfile bs=1024 count=2097152
+mkswap /var/swapfile
+swapon /var/swapfile
+chmod -R 0600 /var/swapfile
+echo  "/var/swapfile   swap  swap  defaults  0  0" >>  /etc/fstab
 }
 
 #最后运行
