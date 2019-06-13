@@ -55,9 +55,9 @@ chmod -R 777 ./Vtuber-recorder
 #添加twitch申请的apikey
 cd ./Vtuber-recorder
 sed -i "s/key/$TWITCHAPIKEY/g" record_twitch.sh
-sed -i "s/folder/$RECFOLDER/g" rcloneupload.sh
-sed -i "s/folder/$RECFOLDER/g" clean.sh
-sed -i "s/folder/$RECFOLDER/g" del12h.sh
+sed -i "s|folder|$RECFOLDER|g" rcloneupload.sh
+sed -i "s|folder|$RECFOLDER|g" clean.sh
+sed -i "s|folder|$RECFOLDER|g" del12h.sh
 #https://www.zhukun.net/archives/8137
 #运行log保存(变量代替目录名字)
 echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_\%t.log" >> /etc/screenrc
