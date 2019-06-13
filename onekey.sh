@@ -60,7 +60,7 @@ sed -i "s|folder|$RECFOLDER|g" clean.sh
 sed -i "s|folder|$RECFOLDER|g" del12h.sh
 #https://www.zhukun.net/archives/8137
 #运行log保存(变量代替目录名字)
-echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_\%t.log" >> /etc/screenrc
+echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_%t.log" >> /etc/screenrc
 }
 rclone()
 {
