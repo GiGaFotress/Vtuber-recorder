@@ -55,6 +55,8 @@ chmod -R 777 ./Vtuber-recorder
 #添加twitch申请的apikey
 cd ./Vtuber-recorder
 sed -i "s/key/$TWITCHAPIKEY/g" record_twitch.sh
+#https://stackoverflow.com/questions/584894/environment-variable-substitution-in-sed
+#sed在变量含有/时会失效，需要更换分隔符
 sed -i "s|folder|$RECFOLDER|g" rcloneupload.sh
 sed -i "s|folder|$RECFOLDER|g" clean.sh
 sed -i "s|folder|$RECFOLDER|g" del12h.sh
