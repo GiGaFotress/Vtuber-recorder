@@ -46,7 +46,7 @@ wget -q -O- https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' 
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="youtube_${Title}_$(date +"%Y%m%d_%H%M%S")_${ID}.ts"
   # Also save the metadate to file
-  echo "$METADATA" > "${5}/log/youtube/${FNAME}.info.txt"
+  echo "$METADATA" > "${5}log/${FNAME}.info.txt"
 
   # Print logs
   echo "$LOG_PREFIX Start recording, metadata saved to \"$FNAME.info.txt\"."
