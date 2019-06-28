@@ -7,11 +7,14 @@ VTB多平台全自动录制
 自动上传和清理依赖:rclone(这玩意极占内存,请注意低于2G内存的机器开启1G以上swap),crontab
 
 添加一键部署脚本
+
 wget -N --no-check-certificate "https://raw.githubusercontent.com/GiGaFotress/Vtuber-recorder/master/onekey.sh" && chmod +x onekey.sh && ./onekey.sh
 
 仅用于awsligthsail的centos7上测试通过，包含ffmpeg,streamlink,livedl,youget,youtube-dl,rclone（带有2G虚拟内存）,以及tcp加速软件（bbr锐速可选）
 
-未来预期添加选项让rclone等可选
+出现问题请勿多次运行,升级选项会强制同步所有脚本,请提前备份config和自己修改过的脚本部分
+
+~~未来预期添加选项让rclone等可选
 
 -----------------------------------------------------
 使用方法
