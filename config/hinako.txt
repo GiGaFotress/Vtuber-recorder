@@ -1,6 +1,0 @@
-Savefolder:/home/centos/Vtuber-recorder/savevideo/hinako/
-Checktime:17
-LoopOrOnce:loop
-https://www.youtube.com/channel/UChqYnJlFxlBi6DfRz6jRenQ
-https://live.bilibili.com/11672349
-https://twitcasting.tv/merrysan_cas_

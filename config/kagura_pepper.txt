@@ -1,6 +1,0 @@
-Savefolder:/home/centos/Vtuber-recorder/savevideo/kagura_pepper/
-Checktime:20
-LoopOrOnce:loop
-https://www.youtube.com/channel/UCbfv8uuUXt3RSJGEwxny5Rw
-https://live.bilibili.com/21304638
-https://twitcasting.tv/nana_kaguraaa

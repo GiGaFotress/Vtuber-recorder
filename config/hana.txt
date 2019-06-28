@@ -1,5 +1,0 @@
-Savefolder:/home/centos/Vtuber-recorder/savevideo/hana/
-Checktime:10
-LoopOrOnce:loop
-https://www.youtube.com/channel/UCn14Z641OthNps7vppBvZFA
-https://live.bilibili.com/12770821

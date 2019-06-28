@@ -1,4 +1,0 @@
-Savefolder:/home/centos/Vtuber-recorder/savevideo/kotone/
-Checktime:20
-LoopOrOnce:loop
-https://www.youtube.com/channel/UCAr7rLi_Wn09G-XfTA07d4g

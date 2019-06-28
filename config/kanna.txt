@@ -1,4 +1,0 @@
-Savefolder:/home/centos/Vtuber-recorder/savevideo/kanna/
-Checktime:20
-LoopOrOnce:loop
-https://live.bilibili.com/14222920

@@ -1,4 +1,0 @@
-Savefolder:/home/centos/Vtuber-recorder/savevideo/haneru/
-Checktime:18
-LoopOrOnce:loop
-https://www.youtube.com/channel/UC0Owc36U9lOyi9Gx9Ic-4qg

@@ -1,6 +1,0 @@
-Savefolder:/home/centos/Vtuber-recorder/savevideo/mea/
-Checktime:5
-LoopOrOnce:loop
-https://www.youtube.com/channel/UCWCc8tO-uUl_7SJXIKJACMw
-https://live.bilibili.com/12235923
-https://www.twitch.tv/kagura0mea

@@ -1,5 +1,0 @@
-Savefolder:/home/centos/Vtuber-recorder/savevideo/mio/
-Checktime:19
-LoopOrOnce:loop
-https://live.bilibili.com/21133979
-https://www.youtube.com/channel/UCp-5t9SrOQwXMU7iIjQfARg

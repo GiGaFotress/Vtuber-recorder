@@ -1,4 +1,0 @@
-Savefolder:/home/centos/Vtuber-recorder/savevideo/ashn/
-Checktime:10
-LoopOrOnce:loop
-https://twitcasting.tv/hmwr_4
