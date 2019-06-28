@@ -41,7 +41,7 @@ while true; do
 
   # Start recording
 
-./livedl -tcas -tcas-retry=on "$1" > "${5}log/${FNAME}.livedl.log" 2>&1
+./livedl -tcas -tcas-retry=on "$1" > "${4}log/${FNAME}.livedl.log" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
