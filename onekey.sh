@@ -70,6 +70,8 @@ curl https://rclone.org/install.sh | sudo bash
 (crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" >/dev/null 2>&1") | crontab -
 (crontab -l ; echo "* */2 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" >/dev/null 2>&1") | crontab -
 (crontab -l ; echo "*/1 * * * * flock -xn /tmp/test2.lock -c "$RECFOLDER/Vtuber-recorder/clean.sh" >/dev/null 2>&1") | crontab -
+}
+visualmem(){
 dd if=/dev/zero of=/var/swapfile bs=1024 count=2097152
 mkswap /var/swapfile
 swapon /var/swapfile
@@ -82,15 +84,31 @@ bbr(){
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 }
 
-#启动部分，函数需要在前声明才可使用
-main(){
-root
+readkey(){
 clear
-echo -e "———————————————————————————————————————"
-echo -e "${Blue}油管b站TC老鼠台一键环境配置脚本 for CentOS 7${Font}"
-echo -e "———————————————————————————————————————"
 read -p "请输入Twitchkey:" TWITCHAPIKEY
 read -p "请输入希望安装录播系统的目录(目录最后请勿带有斜杠):" RECFOLDER
+}
+
+update(){
+root
+readkey
+gitcode
+}
+
+installbash(){
+root
+readkey
+python
+ffmpeg
+goinstall
+gitcode
+bbr
+}
+
+installwithoutvmem(){
+root
+readkey
 python
 ffmpeg
 goinstall
@@ -98,4 +116,55 @@ gitcode
 rclone
 bbr
 }
-main
+
+install_all(){
+root
+readkey
+python
+ffmpeg
+goinstall
+gitcode
+rclone
+visualmem
+bbr
+}
+
+start_menu(){
+Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
+clear
+echo && echo -e " 
+ ${Blue}油管b站TC老鼠台一键环境配置脚本 for CentOS 7${Font}
+ ${Green_font_prefix}0.${Font_color_suffix} 升级脚本
+ ${Green_font_prefix}1.${Font_color_suffix} 只安装录制环境
+ ${Green_font_prefix}2.${Font_color_suffix} 安装录制环境同时也安装自动上传环境${Red_font_prefix}(不安装虚拟内存)${Font_color_suffix}
+ ${Green_font_prefix}3.${Font_color_suffix} 安装录制环境同时也安装自动上传环境${Red_font_prefix}(带有虚拟内存)${Font_color_suffix}
+ ${Green_font_prefix}4.${Font_color_suffix} 退出
+" && echo
+	
+echo
+read -p " 请输入数字 [0-11]:" num
+case "$num" in
+	0)
+	update
+	;;
+	1)
+	installbash
+	;;
+	2)
+	installwithoutvmem
+	;;
+	3)
+	install_all
+	;;
+	4)
+	exit 1
+	;;
+	*)
+	clear
+	echo -e "${Error}:请输入正确数字 [0-4]"
+	sleep 5s
+	start_menu
+	;;
+esac
+}
+start_menu
