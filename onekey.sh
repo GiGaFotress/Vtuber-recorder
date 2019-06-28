@@ -95,6 +95,7 @@ cd "$RECFOLDER"
 cd ./Vtuber-recorder
 git reset --hard
 git pull origin
+cd .//
 chmod -R 777 ./Vtuber-recorder
 #添加twitch申请的apikey
 cd ./Vtuber-recorder
