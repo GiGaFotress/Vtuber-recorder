@@ -19,7 +19,8 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/GiGaFotress/Vt
 -----------------------------------------------------
 使用方法
 新建一个txt文件放入脚本目录的config文件夹,并填入某个vtb的所有直播平台连接和你希望保存的路径(路径请使用绝对路径),每行一个
-文件夹下有示例文件
+
+config文件夹的example下有示例文件
 
 ~~注意,youtube监测脚本需要根据服务器所在地进行调整
 
