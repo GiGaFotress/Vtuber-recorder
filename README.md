@@ -14,7 +14,7 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/GiGaFotress/Vt
 
 出现问题请勿多次运行,升级选项会强制同步所有脚本,请提前备份config和自己修改过的脚本部分
 
-~~未来预期添加选项让rclone等可选
+~~未来预期添加选项让rclone等可选~~
 
 -----------------------------------------------------
 使用方法
@@ -22,9 +22,9 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/GiGaFotress/Vt
 
 config文件夹的example下有示例文件
 
-~~注意,youtube监测脚本需要根据服务器所在地进行调整
+~~注意,youtube监测脚本需要根据服务器所在地进行调整~~
 
-~~使用wget下载随意正在直播的频道,然后搜索span class="yt-badge  yt-badge-live"
+~~使用wget下载随意正在直播的频道,然后搜索span class="yt-badge  yt-badge-live"~~
 
 ~~后面的文字为直播中的各语言表达,填入脚本中~~
 
@@ -40,7 +40,7 @@ config文件夹的example下有示例文件
 ------------------------------------------------------------
 启动指令
 
-./index.sh [name]     [format] ~~[loop|once][interval]现在在文件内指定
+./index.sh [name]     [format] ~~[loop|once][interval]现在在文件内指定~~
 
 ./index.sh txt文件名 需求的录像质量 ~~是否循环 每次循环检查时间 
 
