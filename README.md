@@ -7,20 +7,24 @@ VTB多平台全自动录制
 自动上传和清理依赖:rclone(这玩意极占内存,请注意低于2G内存的机器开启1G以上swap),crontab
 
 添加一键部署脚本
+
 wget -N --no-check-certificate "https://raw.githubusercontent.com/GiGaFotress/Vtuber-recorder/master/onekey.sh" && chmod +x onekey.sh && ./onekey.sh
 
 仅用于awsligthsail的centos7上测试通过，包含ffmpeg,streamlink,livedl,youget,youtube-dl,rclone（带有2G虚拟内存）,以及tcp加速软件（bbr锐速可选）
 
-未来预期添加选项让rclone等可选
+出现问题请勿多次运行,升级选项会强制同步所有脚本,请提前备份config和自己修改过的脚本部分(稍作修改了结构可以直接更新了但是还是建议提前备份)
+
+~~未来预期添加选项让rclone等可选~~
 
 -----------------------------------------------------
 使用方法
 新建一个txt文件放入脚本目录的config文件夹,并填入某个vtb的所有直播平台连接和你希望保存的路径(路径请使用绝对路径),每行一个
-文件夹下有示例文件
 
-~~注意,youtube监测脚本需要根据服务器所在地进行调整
+config文件夹的example下有示例文件
 
-~~使用wget下载随意正在直播的频道,然后搜索span class="yt-badge  yt-badge-live"
+~~注意,youtube监测脚本需要根据服务器所在地进行调整~~
+
+~~使用wget下载随意正在直播的频道,然后搜索span class="yt-badge  yt-badge-live"~~
 
 ~~后面的文字为直播中的各语言表达,填入脚本中~~
 
@@ -36,7 +40,7 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/GiGaFotress/Vt
 ------------------------------------------------------------
 启动指令
 
-./index.sh [name]     [format] ~~[loop|once][interval]现在在文件内指定
+./index.sh [name]     [format] ~~[loop|once][interval]现在在文件内指定~~
 
 ./index.sh txt文件名 需求的录像质量 ~~是否循环 每次循环检查时间 
 
