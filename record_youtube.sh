@@ -34,9 +34,7 @@ wget -q -O- https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' 
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
   done
-    METADATA=$(youtube-dl --get-id --get-title --get-description \
-      --no-playlist --playlist-items 1 \
-      --match-filter is_live "${LIVE_URL}" 2>/dev/null)
+    METADATA=$(youtube-dl --get-id --get-title --get-description "${LIVE_URL}" 2>/dev/null)
 	#Savetitle
   Title=$(echo "$METADATA" | sed -n '1p'|sed 's/[()/\\!-\$]//g')
 
