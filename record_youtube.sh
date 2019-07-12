@@ -59,6 +59,7 @@ else
 FORMAT=720
 fi
   # Use streamlink to record for HLS seeking support
+ echo "${FORMAT}"
 M3U8_URL=$(streamlink --stream-url "https://www.youtube.com/watch?v=${ID}" "${FORMAT}")
   ffmpeg   -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "${5}log/${FNAME}.log" 2>&1    
 
