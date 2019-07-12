@@ -52,14 +52,15 @@ wget -q -O- https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' 
 
   # Start recording
   # ffmpeg -i "$M3U8_URL" -codec copy -f mpegts "savevideo/$FNAME" > "savevideo/$FNAME.log" 2>&1
- FORMATTEST=$(streamlink  https://www.youtube.com/watch?v=E3lhGZH7z1Ystreamli|grep  "1080")
+  
+   FORMATTEST=$(streamlink  https://www.youtube.com/watch?v=JpWLHJCfI4c|grep  "1080")
  if [[ -n "$FORMATTEST" ]]; then
 FORMAT=1080
 else 
 FORMAT=720
 fi
+echo ${FORMAT}
   # Use streamlink to record for HLS seeking support
- echo "${FORMAT}"
 M3U8_URL=$(streamlink --stream-url "https://www.youtube.com/watch?v=${ID}" "${FORMAT}")
   ffmpeg   -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "${5}log/${FNAME}.log" 2>&1    
 
