@@ -55,9 +55,9 @@ wget -q -O- https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' 
   
 FORMATTEST=$(streamlink  https://www.youtube.com/watch?v=${ID}|grep -q "1080")
  if [[ -n "$FORMATTEST" ]]; then
-FORMAT=1080
+FORMAT=1080p
 else 
-FORMAT=720
+FORMAT=720p
 fi
 echo ${FORMAT}
   # Use streamlink to record for HLS seeking support
