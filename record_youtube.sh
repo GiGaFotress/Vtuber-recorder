@@ -53,7 +53,7 @@ wget -q -O- https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' 
   # Start recording
   # ffmpeg -i "$M3U8_URL" -codec copy -f mpegts "savevideo/$FNAME" > "savevideo/$FNAME.log" 2>&1
   
-FORMATTEST=$(streamlink  https://www.youtube.com/watch?v=${ID}|grep -q "1080")
+FORMATTEST=$(streamlink  https://www.youtube.com/watch?v=${ID}|grep  "1080")
  if [[ -n "$FORMATTEST" ]]; then
 FORMAT=1080p
 else 
