@@ -23,7 +23,7 @@ while true; do
 	#wget -q -O-  https://api.twitch.tv/kraken/streams/$1?client_id=key|grep -q live&& break
 	curl -H 'Accept: application/vnd.twitchtv.v5+json' \
 	-H 'Client-ID:key' \
-	-X GET https://api.twitch.tv/kraken/streams/$2
+	-X GET https://api.twitch.tv/helix/streams?user_login=$1|grep -q live&& break
     echo "$LOG_PREFIX The stream is not available now."
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
