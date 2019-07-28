@@ -20,7 +20,10 @@ while true; do
 
     # Get the m3u8 address with streamlink
 	#curl -s https://api.twitch.tv/kraken/streams/$1?client_id=key|grep -q live&& break
-	wget -q -O-  https://api.twitch.tv/kraken/streams/$1?client_id=key|grep -q live&& break
+	#wget -q -O-  https://api.twitch.tv/kraken/streams/$1?client_id=key|grep -q live&& break
+	curl -H 'Accept: application/vnd.twitchtv.v5+json' \
+	-H 'Client-ID:key' \
+	-X GET https://api.twitch.tv/kraken/streams/$2
     echo "$LOG_PREFIX The stream is not available now."
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."
     sleep $INTERVAL
