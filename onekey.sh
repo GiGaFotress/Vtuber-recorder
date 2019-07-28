@@ -49,6 +49,7 @@ go get github.com/mattn/go-sqlite3
 go get github.com/gin-gonic/gin
 }
 gitcode(){
+[[ ! -d "$RECFOLDER" ]]&&mkdir "$RECFOLDER"
 cd "$RECFOLDER"
 git clone https://github.com/GiGaFotress/Vtuber-recorder.git
 chmod -R 777 ./Vtuber-recorder
