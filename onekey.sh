@@ -92,6 +92,7 @@ read -p "请输入希望安装录播系统的目录(目录最后请勿带有斜�
 }
 gitupdate()
 {
+[[ ! -d "$RECFOLDER" ]]&&mkdir "$RECFOLDER"
 cd $RECFOLDER/Vtuber-recorder
 git reset --hard
 git pull origin
