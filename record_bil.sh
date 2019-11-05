@@ -29,7 +29,7 @@ while true; do
 
   # Start recording
   M3U8_URL=$(streamlink --stream-url "https://live.bilibili.com/$1" "best")
-   ffmpeg  -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "${5}log/${FNAME}.log" 2>&1
+   ffmpeg -user_agent "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0"  -headers "referer: https://live.bilibili.com/" -i "$M3U8_URL" -codec copy   -f hls -hls_time 3600 -hls_list_size 0 "$5$FNAME" > "${5}log/${FNAME}.log" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
