@@ -107,6 +107,19 @@ sed -i "s|folder|$RECFOLDER|g" del12h.sh
 #https://www.zhukun.net/archives/8137
 #运行log保存(变量代替目录名字)
 echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_%t.log" >> /etc/screenrc
+echo "$RECFOLDER/Vtuber-recorder/log/screenlog_*.log" > /etc/logrotate.d/savevideolog
+echo "{" >> /etc/logrotate.d/savevideolog
+echo "daily" >> /etc/logrotate.d/savevideolog
+echo "rotate 60" >> /etc/logrotate.d/savevideolog
+echo "dateext" >> /etc/logrotate.d/savevideolog
+echo "nocompress" >> /etc/logrotate.d/savevideolog
+echo "create" >> /etc/logrotate.d/savevideolog
+echo "copytruncate" >> /etc/logrotate.d/savevideolog
+echo "missingok" >> /etc/logrotate.d/savevideolog
+echo "notifempty" >> /etc/logrotate.d/savevideolog
+echo "su root root" >> /etc/logrotate.d/savevideolog
+echo "}" >> /etc/logrotate.d/savevideolog
+sudo /usr/sbin/logrotate -v /etc/logrotate.conf
 }
 update(){
 root
