@@ -173,7 +173,7 @@ echo && echo -e "
 " && echo
 	
 echo
-read -p " 请输入数字 [0-11]:" num
+read -p " 请输入数字 [0-4]:" num
 case "$num" in
 	0)
 	update
