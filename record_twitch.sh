@@ -1,7 +1,5 @@
 #!/bin/bash
 # Twitch Live Stream Recorder
-TWITCHPID="$$"
-echo "$6:TWITCH   $TWITCHPID" >> "./running.txt"
 
 if [[ ! -n "$1" ]]; then
   echo "usage: $0 twitch_id [format] [loop|once] [interval] [savefolder]"
