@@ -189,7 +189,7 @@ case "$num" in
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-4]"
+	echo -e "${Error}:请输入正确数字 [1-5]"
 	sleep 5s
 	start_menu
 	;;
