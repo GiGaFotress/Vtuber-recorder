@@ -64,12 +64,25 @@ sed -i "s|folder|$RECFOLDER|g" del12h.sh
 #https://www.zhukun.net/archives/8137
 #运行log保存(变量代替目录名字)
 echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_%t.log" >> /etc/screenrc
+echo "$RECFOLDER/Vtuber-recorder/log/screenlog_*.log" > /etc/logrotate.d/savevideolog
+echo "{" >> /etc/logrotate.d/savevideolog
+echo "daily" >> /etc/logrotate.d/savevideolog
+echo "rotate 60" >> /etc/logrotate.d/savevideolog
+echo "dateext" >> /etc/logrotate.d/savevideolog
+echo "nocompress" >> /etc/logrotate.d/savevideolog
+echo "create" >> /etc/logrotate.d/savevideolog
+echo "copytruncate" >> /etc/logrotate.d/savevideolog
+echo "missingok" >> /etc/logrotate.d/savevideolog
+echo "notifempty" >> /etc/logrotate.d/savevideolog
+echo "su root root" >> /etc/logrotate.d/savevideolog
+echo "}" >> /etc/logrotate.d/savevideolog
+sudo /usr/sbin/logrotate -v /etc/logrotate.conf
 }
 rclone()
 {
 curl https://rclone.org/install.sh | sudo bash
-(crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" >/dev/null 2>&1") | crontab -
-(crontab -l ; echo "* */2 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" >/dev/null 2>&1") | crontab -
+(crontab -l ; echo "* */1 * * * flock -xn /tmp/test.lock -c "$RECFOLDER/Vtuber-recorder/rcloneupload.sh" >$RECFOLDER/Vtuber-recorder/log/rclone$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
+(crontab -l ; echo "* */2 * * * flock -xn /tmp/test1.lock -c "$RECFOLDER/Vtuber-recorder/del12h.sh" >$RECFOLDER/Vtuber-recorder/log/del12h$(date +"[\%Y-\%m-\%d \%H:\%M:\%S]").log" 2>&1") | crontab -
 (crontab -l ; echo "*/1 * * * * flock -xn /tmp/test2.lock -c "$RECFOLDER/Vtuber-recorder/clean.sh" >/dev/null 2>&1") | crontab -
 }
 visualmem(){
@@ -104,22 +117,6 @@ sed -i "s/key/$TWITCHAPIKEY/g" record_twitch.sh
 sed -i "s|folder|$RECFOLDER|g" rcloneupload.sh
 sed -i "s|folder|$RECFOLDER|g" clean.sh
 sed -i "s|folder|$RECFOLDER|g" del12h.sh
-#https://www.zhukun.net/archives/8137
-#运行log保存(变量代替目录名字)
-echo "logfile $RECFOLDER/Vtuber-recorder/log/screenlog_%t.log" >> /etc/screenrc
-echo "$RECFOLDER/Vtuber-recorder/log/screenlog_*.log" > /etc/logrotate.d/savevideolog
-echo "{" >> /etc/logrotate.d/savevideolog
-echo "daily" >> /etc/logrotate.d/savevideolog
-echo "rotate 60" >> /etc/logrotate.d/savevideolog
-echo "dateext" >> /etc/logrotate.d/savevideolog
-echo "nocompress" >> /etc/logrotate.d/savevideolog
-echo "create" >> /etc/logrotate.d/savevideolog
-echo "copytruncate" >> /etc/logrotate.d/savevideolog
-echo "missingok" >> /etc/logrotate.d/savevideolog
-echo "notifempty" >> /etc/logrotate.d/savevideolog
-echo "su root root" >> /etc/logrotate.d/savevideolog
-echo "}" >> /etc/logrotate.d/savevideolog
-sudo /usr/sbin/logrotate -v /etc/logrotate.conf
 }
 update(){
 root
@@ -175,19 +172,19 @@ echo && echo -e "
 echo
 read -p " 请输入数字 [0-4]:" num
 case "$num" in
-	0)
+	1)
 	update
 	;;
-	1)
+	2)
 	installbash
 	;;
-	2)
+	3)
 	installwithoutvmem
 	;;
-	3)
+	4)
 	install_all
 	;;
-	4)
+	5)
 	exit 1
 	;;
 	*)
