@@ -162,15 +162,15 @@ Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_p
 clear
 echo && echo -e " 
  ${Blue}油管b站TC老鼠台一键环境配置脚本 for CentOS 7${Font}
- ${Green_font_prefix}0.${Font_color_suffix} 升级脚本
- ${Green_font_prefix}1.${Font_color_suffix} 只安装录制环境
- ${Green_font_prefix}2.${Font_color_suffix} 安装录制环境同时也安装自动上传环境${Red_font_prefix}(不安装虚拟内存)${Font_color_suffix}
- ${Green_font_prefix}3.${Font_color_suffix} 安装录制环境同时也安装自动上传环境${Red_font_prefix}(带有虚拟内存)${Font_color_suffix}
- ${Green_font_prefix}4.${Font_color_suffix} 退出
+ ${Green_font_prefix}1.${Font_color_suffix} 升级脚本
+ ${Green_font_prefix}2.${Font_color_suffix} 只安装录制环境
+ ${Green_font_prefix}3.${Font_color_suffix} 安装录制环境同时也安装自动上传环境${Red_font_prefix}(不安装虚拟内存)${Font_color_suffix}
+ ${Green_font_prefix}4.${Font_color_suffix} 安装录制环境同时也安装自动上传环境${Red_font_prefix}(带有虚拟内存)${Font_color_suffix}
+ ${Green_font_prefix}5.${Font_color_suffix} 退出
 " && echo
 	
 echo
-read -p " 请输入数字 [0-4]:" num
+read -p " 请输入数字 [1-5]:" num
 case "$num" in
 	1)
 	update
