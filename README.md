@@ -16,6 +16,8 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/GiGaFotress/Vt
 
 ~~未来预期添加选项让rclone等可选~~
 
+如果服务器位于国内请指定python的源为国内
+
 -----------------------------------------------------
 使用方法
 新建一个txt文件放入脚本目录的config文件夹,并填入某个vtb的所有直播平台连接和你希望保存的路径(路径请使用绝对路径),每行一个
