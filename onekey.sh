@@ -14,14 +14,20 @@ timedatectl set-timezone Asia/Shanghai
  yum -y install https://centos7.iuscommunity.org/ius-release.rpm
  yum -y install python36
  yum -y install python36-pip
+ #备份原python环境
 cd /usr/bin
 mv python python.bak
 ln -s /usr/bin/python3.6 /usr/bin/python
-
+Kcase=$(grep  python /usr/bin/yum)
+if [ '#!/usr/bin/python2' == "$Kcase" ];
+then
+echo "already running"
+else
 # vi /usr/bin/yum#替换Python为python2
 sed -i 's/python/python2/g' /usr/bin/yum
 # vi /usr/libexec/urlgrabber-ext-down
 sed -i 's/python/python2/g' /usr/libexec/urlgrabber-ext-down
+fi
 #两个文件均修改开头的python为python2
  pip3 install youtube-dl
  pip3 install you-get
