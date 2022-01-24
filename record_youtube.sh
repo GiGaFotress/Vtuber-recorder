@@ -27,7 +27,7 @@ while true; do
   #curl -s  https://www.youtube.com/channel/$1|grep -q "ライブ配信中" && break
  #curl -s -N https://www.youtube.com/channel/$1/live|grep -q '\\"isLive\\":true' && break
 #wget -q -O- https://www.youtube.com/channel/$1/live|grep  'qualityLabel' |grep -q '\\"isLive\\":true' && break
-wget -q -O- https://www.youtube.com/channel/$1/live|grep  '\\"isLive\\":true' |grep -q 'yt_live_broadcast' && break
+wget -q -O- https://www.youtube.com/channel/$1/live|grep  '\"isLive\":true' |grep -q 'yt_live_broadcast' && break
 
 
 
